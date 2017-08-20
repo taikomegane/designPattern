@@ -1,13 +1,13 @@
-package iteratorP;
+package iterator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookShelf implements Aggregate {
+public class BookShelfP implements Aggregate {
 
 	private List<Book> books = new ArrayList<Book>();
 
-	public BookShelf(){}
+	public BookShelfP(){}
 
 	public Book getBookAt(int index){
 		return books.get(index);
@@ -22,7 +22,7 @@ public class BookShelf implements Aggregate {
 	}
 
 	public Iterator iterator(){
-		return new BookShelfIterator(this);
+		return new BookShelfIteratorP(this);
 	}
 
 }

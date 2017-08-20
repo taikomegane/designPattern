@@ -1,11 +1,11 @@
-package iteratorP;
+package iterator;
 
-public class BookShelfIterator implements Iterator{
+public class BookShelfIteratorP implements Iterator{
 
-	private BookShelf bookShelf;
+	private BookShelfP bookShelf;
 	private int index;
 
-	public BookShelfIterator (BookShelf bookShelf){
+	public BookShelfIteratorP (BookShelfP bookShelf){
 		this.bookShelf = bookShelf;
 		this.index = 0;
 	}
