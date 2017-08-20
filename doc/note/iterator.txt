@@ -1,0 +1,39 @@
+Iteratorパターン (反復子)
+= 何かがたくさん集まっているときに、それを順番に指し示していき、全体をスキャンしていく処理を行う
+
+- Aggregate ≪interface≫ : 数え上げを行うものの集合体
+	- iterator() : 集合体に対応するiteratorを１つ作成する
+
+- Iterator ≪interface≫ : 数え上げ、スキャンを行うインタフェース
+	- hasNext() : 次の要素が存在するかどうかを調べる
+		- 次の要素が存在したらTRUE、しなければFALSEを返す
+	- next() : 次の要素を得る、内部状態を１つ次に進める
+
+- ConcreteAggregate : 具体的な集合体
+	- ConcreteIteratorのインスタンスを作り出す
+
+- ConcreteIterator : 具体的な反復子
+	- スキャンするために必要な情報を持っている必要がある
+
+
+メリット
+- 実装とは切り離して、数え上げを行うことができる
+	ex) mainメソッドより。BookShelfクラスには依存していない
+		while(it.hasNext()){
+				Book book = (Book) it.next();
+				System.out.println(book.getName());
+		}
+		→BookShelfがiteratorメソッドを持っていて、Iteratorを返していれば、whileループは問題なく機能する
+- 数え上げの仕組みがAggregate役の外に置かれているため、１つのConcreteAggregateクラスに対して、複数のConcreteIteratorクラスを定義することができる
+		
+* 具体的なクラスだけを使うと、クラス間の結合が強くなってしまいがち。インタフェースや抽象クラスを使うと、結合を弱め、クラスを部品として再利用しやすくなる
+		
+注意点
+- BookShelfIteratorクラスはBookShelfクラスに依存しているため、BookShelfクラスが大きく変更された場合は修正が必要
+- AggregateとIterator及びその実装クラスはそれぞれ対になっている
+- next()＝現在の要素を返しつつ、次の位置に進めることを意味する
+
+関連しているパターン
+- Visitorパターン
+- Compositeパターン
+- FactoryMethodパターン
